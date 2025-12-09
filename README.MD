@@ -1,110 +1,193 @@
-# 🩺 Multi-Disease Prediction Model from Chest X-Ray Images  
-### Deep Learning | Explainable AI | Medical Imaging
+# 🩻 ChestXNet++
+### Automated Chest X-Ray Disease Detection using Deep Learning
+
+ChestXNet++ is a deep learning–based medical imaging project that detects multiple thoracic diseases from chest X-ray images using the NIH Chest X-ray dataset.  
+The project follows **industry best practices** in data preprocessing, model training, evaluation, and documentation.
 
 ---
 
-## 📖 Project Overview
-The **Multi-Disease Prediction Model** is an end-to-end medical image analysis system that automatically detects **multiple thoracic diseases from chest X-ray images** using deep learning techniques.
+## 🚀 Project Highlights
 
-Unlike traditional single-disease classifiers, this project supports **multi-label classification**, enabling the detection of **multiple co-existing diseases from a single X-ray**. To improve trust and interpretability, the system integrates **Explainable AI (Grad-CAM)** to highlight pathological regions influencing the model’s predictions.
-
-The project also includes a **web-based application** that allows users to upload X-ray images and receive real-time predictions along with visual explanations.
-
----
-
-## 🎯 Objectives
-- Build a robust deep-learning model capable of detecting multiple thoracic diseases
-- Support realistic medical scenarios using **multi-label classification**
-- Improve interpretability with **visual explanations (Grad-CAM)**
-- Provide an end-to-end pipeline: dataset → training → evaluation → deployment
-- Create a reusable and extensible architecture for future medical AI research
+✅ Multi-label disease classification  
+✅ Medical imaging best practices  
+✅ ROC-AUC–based evaluation  
+✅ Fast and efficient training  
+✅ Kaggle & GitHub ready  
+✅ Resume and interview friendly  
 
 ---
 
-## 🧠 Diseases Covered
-- Pneumonia  
+## 🧠 Problem Statement
+
+Chest X-ray interpretation is time-consuming and requires expert radiologists.  
+This project aims to assist medical professionals by building an **AI system capable of predicting multiple chest diseases from a single X-ray image**.
+
+---
+
+## 📂 Dataset
+
+- **Name:** NIH Chest X-ray Dataset  
+- **Images:** 112,120 frontal chest X-rays  
+- **Labels:** 14 thoracic diseases  
+- **Source:** National Institutes of Health (NIH)
+
+> ⚠️ Dataset is **NOT uploaded to GitHub** due to its large size.
+
+---
+
+## 🦠 Diseases Classified
+
+- Atelectasis  
 - Cardiomegaly  
-- Edema  
 - Effusion  
 - Infiltration  
-
-*(The architecture is easily extendable to more diseases.)*
-
----
-
-## 📊 Dataset Information
-### Primary Dataset
-- **NIH Chest X-ray14 Dataset**
-- Contains **112,120 frontal X-ray images** from over 30,000 patients
-- Includes **14 thoracic disease labels**
-- Publicly available for research purposes
-Dataset used: NIH Chest X-ray14 – a large-scale public dataset for multi-label thoracic disease classification.
-
-
-🔗 Dataset link:  
-https://www.kaggle.com/nih-chest-xrays/data
-
-> ⚠️ The dataset is NOT included in this repository due to size constraints.  
-> Please download it manually and place it inside the `data/raw/` directory.
+- Mass  
+- Nodule  
+- Pneumonia  
+- Pneumothorax  
+- Consolidation  
+- Edema  
+- Emphysema  
+- Fibrosis  
+- Pleural Thickening  
+- Hernia  
 
 ---
 
-## 🧪 Data Preprocessing
-- Image resizing and normalization
-- Pixel intensity scaling
-- Data augmentation:
-  - Horizontal flipping
-  - Rotation
-  - Zoom
-  - Contrast enhancement (optional)
-- Multi-label binarization
-- Train/Validation/Test split with patient-wise separation
+## 🧩 Problem Type
+
+- **Multi-label classification**
+- One X-ray can have multiple diseases
+- Outputs disease-wise probability scores
 
 ---
 
 ## 🏗️ Model Architecture
-- **Base Models:**
-  - Convolutional Neural Networks (CNN)
-  - Transfer Learning (ResNet, EfficientNet, ConvNeXt)
-- **Classification Type:** Multi-label
-- **Loss Function:** Binary Cross-Entropy
-- **Optimization:** Adam optimizer
-- **Regularization:** Dropout and data augmentation
+
+- Backbone: **ResNet-18 (ImageNet pretrained)**
+- Input size: `224 × 224`
+- Input channels: `1 (grayscale)`
+- Output: `14 sigmoid probability scores`
+- Framework: **PyTorch**
 
 ---
 
-## 🔍 Explainable AI (Grad-CAM)
-To address the black-box nature of deep learning in healthcare:
-- Grad-CAM heatmaps are generated for each prediction
-- Highlight lung regions contributing to disease detection
-- Helps validate model focus and improves transparency
+## ⚙️ Training Configuration
+
+| Parameter | Value |
+|--------|-------|
+| Epochs | 5 |
+| Batch Size | 32 |
+| Optimizer | Adam |
+| Learning Rate | 1e-4 |
+| Loss Function | BCEWithLogitsLoss |
+| Evaluation Metric | ROC-AUC |
 
 ---
 
-## 📈 Evaluation Metrics
-- Accuracy
-- Precision (per disease)
-- Recall (per disease)
-- F1-Score
-- Area Under ROC Curve (AUROC)
-- Confusion Matrix (per class)
+## 📊 Model Performance
+
+> **Primary Metric: ROC-AUC**
+
+| Metric | Value |
+|------|------|
+| Best Validation ROC-AUC | **~0.78** |
+| Training Accuracy | ~78% |
+| Stable Convergence | ✅ |
+
+✅ ROC-AUC is preferred over accuracy due to **class imbalance** in medical datasets.
 
 ---
+Input: Chest X-ray image
 
-## 🧰 Technology Stack
+Predicted Probabilities:
 
-| Category | Tools |
-|--------|------|
-| Programming Language | Python |
-| Deep Learning | TensorFlow / PyTorch |
-| Image Processing | OpenCV, PIL |
-| Explainability | Grad-CAM |
-| Data Handling | NumPy, Pandas |
-| Visualization | Matplotlib, Seaborn |
-| Model Evaluation | Scikit-learn |
-| Web App | Streamlit / Flask |
-| Version Control | Git, GitHub |
+Cardiomegaly: 0.82
 
----
+Effusion: 0.67
 
+Pneumonia: 0.14
+
+Hernia: 0.03
 ## 📁 Project Structure
+
+ChestXNet++/
+│
+├── notebook/
+│ └── chestxnet_training.ipynb
+│
+├── src/
+│ ├── config.py
+│ ├── dataset.py
+│ ├── model.py
+│ ├── train.py
+│ └── evaluate.py
+│
+├── outputs/
+│ ├── best_model.pth
+│ └── metrics.txt
+│
+├── README.md
+└── requirements.txt
+
+
+---
+
+## 📦 Dataset Handling
+
+Due to size limitations:
+- Dataset is stored using **Kaggle Datasets**
+- Image paths are dynamically mapped at runtime
+- CSV file is read during training
+
+---
+
+## 🛠️ Tools & Technologies
+
+- Python
+- PyTorch
+- Pandas & NumPy
+- OpenCV
+- Scikit-learn
+- Kaggle GPU
+
+---
+
+## ⚠️ Limitations
+
+- Labels may contain noise
+- Rare diseases have fewer samples
+- No clinical history is used
+
+---
+
+## 🚀 Future Improvements
+
+- EfficientNet / DenseNet
+- Class-weighted loss
+- Grad-CAM visualization
+- Threshold tuning per disease
+
+---
+
+## 🧑‍⚕️ Medical Disclaimer
+
+This project is **for educational and research purposes only**.  
+It **must not be used for real-world medical diagnosis**.
+
+---
+
+## 👨‍💻 Author
+
+**Abdul Muzamil**  
+Deep Learning | Computer Vision | Medical AI  
+
+📌 Kaggle Notebook: *https://www.kaggle.com/code/shaikmuzamil18/multi-disease-chest-x-ray-classifier*  
+📌 GitHub Repository: *https://github.com/Muzamil2004/Multi-disease-chest-xray-classifier-using-pytorch-and-CNNs*  
+📌 LinkedIn: *(add link)*  
+
+---
+
+⭐ If you find this project useful, consider giving it a star!
+
+
