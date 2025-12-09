@@ -1,0 +1,32 @@
+Epoch 1/5
+Train Loss : 0.4928
+Train Acc  : 0.7577
+Val Loss   : 0.5881
+Val AUC    : 0.7808
+Best model saved.
+
+Epoch 2/5
+Train Loss : 0.4536
+Train Acc  : 0.7879
+Val Loss   : 0.6321
+Val AUC    : 0.7704
+
+Epoch 3/5
+Train Loss : 0.4412
+Train Acc  : 0.7924
+Val Loss   : 0.6253
+Val AUC    : 0.7721
+
+Epoch 4/5
+Train Loss : 0.4307
+Train Acc  : 0.7985
+Val Loss   : 0.6198
+Val AUC    : 0.7749
+
+Epoch 5/5
+Train Loss : 0.4219
+Train Acc  : 0.8041
+Val Loss   : 0.6102
+Val AUC    : 0.7763
+
+Training completed successfully.
