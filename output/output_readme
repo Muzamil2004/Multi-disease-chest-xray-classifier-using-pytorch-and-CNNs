@@ -1,0 +1,17 @@
+# Outputs Directory
+
+This folder contains all generated results from training and evaluating the ChestXNet++ model.
+
+## Files
+
+- **best_model.pth**
+  - Saved PyTorch model with the best validation ROC-AUC
+
+- **metrics.txt**
+  - Final training and validation performance metrics
+
+- **training_log.txt**
+  - Epoch-wise training logs
+
+- **inference_result.txt**
+  - Sample prediction output for test images
