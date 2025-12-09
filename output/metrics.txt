@@ -1,0 +1,28 @@
+==============================
+MODEL PERFORMANCE METRICS
+==============================
+
+Model: ResNet-18 (Pretrained)
+Task: Multi-label Chest X-ray Classification
+Dataset: NIH Chest X-ray
+
+--------------------------------
+Training Configuration
+--------------------------------
+Epochs: 5
+Batch Size: 32
+Optimizer: Adam
+Learning Rate: 0.0001
+Loss Function: BCEWithLogitsLoss
+
+--------------------------------
+Validation Performance
+--------------------------------
+Best Validation ROC-AUC : 0.7808
+Training Accuracy      : 0.78
+Validation Loss        : 0.59
+
+--------------------------------
+Notes
+--------------------------------
+ROC-AUC is preferred over accuracy due to class imbalance.
